@@ -15,7 +15,9 @@ function limitCards(array, number) {
   return cards;
 }
 
-limitCards(originalCards, 4);
+// カードの枚数はここで調整
+// 2とすると4枚出る、max17まで
+limitCards(originalCards, 8);
 const doubleCardsArray = doubleCards(originalCards);
 console.log(doubleCardsArray);
 const randomCardsArray = randomCards(doubleCardsArray);

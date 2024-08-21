@@ -1,5 +1,6 @@
 body {
   text-align: center;
+  padding: 48px 0;
 }
 
 .info {
@@ -8,17 +9,17 @@ body {
 }
 
 .cards {
-  max-width: 800px;
+  max-width: 640px;
   margin: 0 auto;
   display: flex;
   list-style: none;
   padding: 0;
   justify-content: center;
-  gap: 16px;
+  gap: 8px;
   flex-wrap: wrap;
 
   li {
-    width: calc((100% - 16px * 7) / 8);
+    width: calc((100% - 8px * 7) / 8);
   }
 
   button {

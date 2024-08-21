@@ -9,17 +9,15 @@ export default function Card({ id, name, isMatched, onUpdate, isSelected, cardBa
   return (
     <li>
       <button onClick={handleClick} disabled={isMatched === true ? 'disabled' : ''} className={isSelected || isMatched ? 'isSelected' : ''}>
-        <img src={`./images/${cardBackUrl}`} alt='' className='front' />
-        <img src={`./images/card_back.png`} alt='' className='back' />
-        <br />
-        (id: {id})
+        <img src={`./images/${cardBackUrl}`} alt={cardBackUrl} className='front' />
+        <img src={`./images/card_back.png`} alt={cardBackUrl} className='back' />
       </button>
     </li>
   );
 }
 
 Card.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   name: PropTypes.string.isRequired,
   cardBackUrl: PropTypes.string.isRequired,
   onUpdate: PropTypes.func.isRequired,
