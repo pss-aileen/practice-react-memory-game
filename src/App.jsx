@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Card from './components/Card';
 
@@ -68,14 +68,40 @@ function App() {
   // あってなかったら、そのまま
   // そして、isMatched以外のカードは全て閉じるようにする
 
+  function setA(number) {
+    setClickTimes((number) => (number >= 2 ? 0 : number + 1));
+    setB(number);
+  }
+
+  function setB(arrayNumber) {
+    if (clickTimes >= 2) {
+      setOneSession([]);
+    } else {
+      setOneSession((sessionLog) => {
+        const newSessionLog = [...sessionLog, cards[arrayNumber]];
+        return newSessionLog;
+      });
+
+      compare();
+    }
+  }
+
+  function compare() {
+    console.log('通過していますか？');
+    console.log(oneSession);
+    if (oneSession.length >= 1) {
+      const A = oneSession[0]['name'];
+      const B = oneSession[1]['name'];
+
+      if (A === B) {
+        console.log('一致しています！！！');
+      }
+    }
+  }
+
   function handleClick(id, arrayNumber) {
     console.log('handleClickEvent Start');
-    setClickTimes((number) => (number >= 2 ? 0 : number + 1));
-    setOneSession((sessionLog) => {
-      const newSessionLog = [...sessionLog, cards[arrayNumber]];
-      console.log('ループしてる？', newSessionLog);
-      return newSessionLog;
-    });
+    setA(arrayNumber);
   }
 
   return (
