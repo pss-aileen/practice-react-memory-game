@@ -21,20 +21,51 @@ body {
     width: calc((100% - 16px * 7) / 8);
   }
 
-  img {
-    max-width: 100%;
-  }
-
   button {
+    padding: 0;
     width: 100%;
     cursor: pointer;
+    border-color: transparent;
+    background: none;
+    position: relative;
 
     span {
       font-size: 24px;
     }
 
     &.isSelected {
-      border-color: red;
+      /* border-color: red; */
+    }
+
+    img {
+      max-width: 100%;
+      transition: transform 0.3s, z-index 0.3s;
+    }
+
+    .front {
+      transform: rotateY(-180deg);
+    }
+
+    .back {
+      /* transform: rotateY(-180deg); */
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    &.isSelected {
+      /* border-color: red; */
+
+      .front {
+        transform: rotateY(0deg);
+      }
+
+      .back {
+        z-index: -1;
+        transform: rotateY(-180deg);
+        z-index: -1;
+      }
     }
   }
 }

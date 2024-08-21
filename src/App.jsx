@@ -15,7 +15,7 @@ function limitCards(array, number) {
   return cards;
 }
 
-const limitedCards = limitCards(originalCards, 5);
+limitCards(originalCards, 8);
 const doubleCardsArray = doubleCards(originalCards);
 console.log(doubleCardsArray);
 const randomCardsArray = randomCards(doubleCardsArray);
@@ -71,7 +71,10 @@ function App() {
       } else {
         console.log('あってませんでした');
       }
-      setSessionInfo(sessionInfoModel);
+
+      setTimeout(() => {
+        setSessionInfo(sessionInfoModel);
+      }, 1000);
     }
   }, [sessionInfo]);
 
