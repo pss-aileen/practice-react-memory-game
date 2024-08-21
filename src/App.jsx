@@ -54,13 +54,13 @@ function App() {
 
     if (sessionInfo.cards.length === 2) {
       console.log('2つあるよ');
+
       if (sessionInfo.cards[0].name === sessionInfo.cards[1].name) {
         console.log('あってました');
         setCards((cards) => {
           const newCards = [...cards];
           newCards.map((card) => {
             if (card.name === sessionInfo.cards[0].name) {
-              console.log('通ってる？そもそも？');
               card.isMatched = true;
             }
             return card;
@@ -104,9 +104,12 @@ function App() {
       <ul className='cards'>
         {cards.map((card) => {
           let isSelected = false;
-          if (sessionInfo.cards[0] && sessionInfo.cards[0].id === card.id) {
-            isSelected = true;
+          for (let i = 0; i < sessionInfo.cards.length; i++) {
+            if (sessionInfo.cards[0] && sessionInfo.cards[i].id === card.id) {
+              isSelected = true;
+            }
           }
+
           return <Card name={card.name} key={card.id} id={card.id} onUpdate={updateSessionInfo} isMatched={card.isMatched} isSelected={isSelected} cardBackUrl={card.cardBackUrl} />;
         })}
       </ul>
