@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Card from './components/Card';
-// import cards from './data/cards.json';
 import doubleCards from './utils/doubleCards';
 import randomCards from './utils/randomCards';
 import originalCards from './data/cards';
-
-// console.log(cards2);
-console.log(originalCards);
 
 function limitCards(array, number) {
   const cards = array.splice(number);
@@ -17,11 +13,9 @@ function limitCards(array, number) {
 
 // カードの枚数はここで調整
 // 2とすると4枚出る、max17まで
-limitCards(originalCards, 8);
+limitCards(originalCards, 12);
 const doubleCardsArray = doubleCards(originalCards);
-console.log(doubleCardsArray);
 const randomCardsArray = randomCards(doubleCardsArray);
-console.log(randomCardsArray);
 
 function App() {
   const sessionInfoModel = {
@@ -34,7 +28,7 @@ function App() {
 
   function updateSessionInfo(id, name) {
     if (sessionInfo.cards.length === 1 && sessionInfo.cards[0].id === id) {
-      console.log('クリックは無効です');
+      console.log('click is prohibited');
       return;
     }
 
@@ -52,13 +46,11 @@ function App() {
   }
 
   useEffect(() => {
-    // console.log('useEffect');
-
     if (sessionInfo.cards.length === 2) {
-      console.log('2つあるよ');
+      console.log('There are 2 cards.');
 
       if (sessionInfo.cards[0].name === sessionInfo.cards[1].name) {
-        console.log('あってました');
+        console.log('matched');
         setCards((cards) => {
           const newCards = [...cards];
           newCards.map((card) => {
@@ -67,13 +59,12 @@ function App() {
             }
             return card;
           });
-          console.log(newCards);
           return newCards;
         });
 
         setSessionInfo(sessionInfoModel);
       } else {
-        console.log('あってませんでした');
+        console.log('not matched');
 
         setTimeout(() => {
           setSessionInfo(sessionInfoModel);
@@ -82,29 +73,8 @@ function App() {
     }
   }, [sessionInfo]);
 
-  useEffect(() => {
-    // console.log('useEffectのcards: ', cards);
-  }, [cards]);
-
   return (
     <>
-      <h1>Memory Game</h1>
-
-      <h2>info</h2>
-      <ul className='info'>
-        <li>clicked times: {sessionInfo.clickTimes}</li>
-        <li>
-          choosed:{' '}
-          {sessionInfo.cards.map((info) => {
-            return <span key={info.id}>{info.name}</span>;
-          })}
-        </li>
-      </ul>
-
-      <h2>cards</h2>
-
-      <p>他のカードをクリックしてください（or Aがそろいました！）</p>
-
       <ul className='cards'>
         {cards.map((card) => {
           let isSelected = false;
