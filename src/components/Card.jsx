@@ -5,6 +5,7 @@ export default function Card({ id, name, isMatched, onUpdate, isSelected, cardBa
   function handleClick() {
     onUpdate(id, name);
   }
+
   return (
     <li>
       <button onClick={handleClick} disabled={isMatched === true ? 'disabled' : ''} className={isSelected || isMatched ? 'isSelected' : ''}>
