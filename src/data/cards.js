@@ -19,7 +19,7 @@ for (let i = 0; i < 4; i++) {
     const cardName = `card_${cardType}_${cardNumber}`;
 
     const card = {
-      id: 4 * i + j,
+      id: 1 + (4 * i) + j,
       name: cardName,
       cardBackUrl: cardName + '.png',
       isMatched: false,

@@ -1,16 +1,24 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Card from './components/Card';
-import cards from './data/cards.json';
+// import cards from './data/cards.json';
 import doubleCards from './utils/doubleCards';
 import randomCards from './utils/randomCards';
-import cards2 from './data/cards';
+import originalCards from './data/cards';
 
-console.log(cards2);
+// console.log(cards2);
+console.log(originalCards);
 
-const doubleCardsArray = doubleCards(cards);
+function limitCards(array, number) {
+  const cards = array.splice(number);
+
+  return cards;
+}
+
+const limitedCards = limitCards(originalCards, 5);
+const doubleCardsArray = doubleCards(originalCards);
+console.log(doubleCardsArray);
 const randomCardsArray = randomCards(doubleCardsArray);
-
 console.log(randomCardsArray);
 
 function App() {
@@ -42,7 +50,7 @@ function App() {
   }
 
   useEffect(() => {
-    console.log('useEffectじゃ');
+    // console.log('useEffect');
 
     if (sessionInfo.cards.length === 2) {
       console.log('2つあるよ');
@@ -68,7 +76,7 @@ function App() {
   }, [sessionInfo]);
 
   useEffect(() => {
-    console.log('useEffectのcards: ', cards);
+    // console.log('useEffectのcards: ', cards);
   }, [cards]);
 
   return (
@@ -96,7 +104,7 @@ function App() {
           if (sessionInfo.cards[0] && sessionInfo.cards[0].id === card.id) {
             isSelected = true;
           }
-          return <Card name={card.name} key={card.id} id={card.id} onUpdate={updateSessionInfo} isMatched={card.isMatched} isSelected={isSelected} />;
+          return <Card name={card.name} key={card.id} id={card.id} onUpdate={updateSessionInfo} isMatched={card.isMatched} isSelected={isSelected} cardBackUrl={card.cardBackUrl} />;
         })}
       </ul>
     </>

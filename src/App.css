@@ -8,7 +8,7 @@ body {
 }
 
 .cards {
-  max-width: 400px;
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   list-style: none;
@@ -18,12 +18,15 @@ body {
   flex-wrap: wrap;
 
   li {
-    width: calc((100% - 16px * 3) / 4);
+    width: calc((100% - 16px * 7) / 8);
+  }
+
+  img {
+    max-width: 100%;
   }
 
   button {
     width: 100%;
-    aspect-ratio: 1/1.5;
     cursor: pointer;
 
     span {
