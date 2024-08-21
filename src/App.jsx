@@ -38,21 +38,23 @@ function App() {
 
     if (sessionInfo.cards.length === 2) {
       console.log('2つあるよ');
-      console.log(sessionInfo);
-
-      setCards((cards) => {
-        const newCards = [...cards];
-        newCards.map((card) => {
-          if (card.name === sessionInfo.cards[0].name) {
-            console.log('通ってる？そもそも？');
-            card.isMatched = true;
-          }
-          return card;
+      if (sessionInfo.cards[0].name === sessionInfo.cards[1].name) {
+        console.log('あってました');
+        setCards((cards) => {
+          const newCards = [...cards];
+          newCards.map((card) => {
+            if (card.name === sessionInfo.cards[0].name) {
+              console.log('通ってる？そもそも？');
+              card.isMatched = true;
+            }
+            return card;
+          });
+          console.log(newCards);
+          return newCards;
         });
-        console.log(newCards);
-        return newCards;
-      });
-
+      } else {
+        console.log('あってませんでした');
+      }
       setSessionInfo(sessionInfoModel);
     }
   }, [sessionInfo]);
