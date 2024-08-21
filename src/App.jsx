@@ -88,9 +88,13 @@ function App() {
       <p>他のカードをクリックしてください（or Aがそろいました！）</p>
 
       <ul className='cards'>
-        {cards.map((card) => (
-          <Card name={card.name} key={card.id} id={card.id} onUpdate={updateSessionInfo} isMatched={card.isMatched} />
-        ))}
+        {cards.map((card) => {
+          let isSelected = false;
+          if (sessionInfo.cards[0] && sessionInfo.cards[0].id === card.id) {
+            isSelected = true;
+          }
+          return <Card name={card.name} key={card.id} id={card.id} onUpdate={updateSessionInfo} isMatched={card.isMatched} isSelected={isSelected} />;
+        })}
       </ul>
     </>
   );
