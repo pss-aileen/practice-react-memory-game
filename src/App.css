@@ -29,5 +29,9 @@ body {
     span {
       font-size: 24px;
     }
+
+    &.isSelected {
+      border-color: red;
+    }
   }
 }
