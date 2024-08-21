@@ -8,7 +8,9 @@ export default function Card({ id, name, isMatched, onUpdate }) {
   return (
     <li>
       <button onClick={handleClick} disabled={isMatched === true ? 'disabled' : ''}>
-        {name} (id: {id})
+        <span>{name}</span>
+        <br />
+        (id: {id})
       </button>
     </li>
   );
