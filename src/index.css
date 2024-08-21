@@ -1,0 +1,14 @@
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+ul {
+  li + li {
+    margin-top: 8px;
+  }
+}
+
+button {
+  font-size: 16px;
+  cursor: pointer;
+}
