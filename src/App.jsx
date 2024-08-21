@@ -73,7 +73,7 @@ function App() {
       <h1>Memory Game</h1>
 
       <h2>info</h2>
-      <ul>
+      <ul className='info'>
         <li>clicked times: {sessionInfo.clickTimes}</li>
         <li>
           choosed:{' '}
@@ -85,7 +85,9 @@ function App() {
 
       <h2>cards</h2>
 
-      <ul>
+      <p>他のカードをクリックしてください（or Aがそろいました！）</p>
+
+      <ul className='cards'>
         {cards.map((card) => (
           <Card name={card.name} key={card.id} id={card.id} onUpdate={updateSessionInfo} isMatched={card.isMatched} />
         ))}
