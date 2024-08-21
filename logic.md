@@ -20,6 +20,25 @@
     - ちがければ、そのまま（のちに CSS ロジックを追加する）
   - セッションをリセット
 
+### HTML
+
+- 開いたら、ひらいたカードを強調させたい（赤色で囲むとかとりあえず）
+- 1番目に開いたものをどうやって検知するか？
+- cards.mapの過程で、sessonInfoのはじめのidと合致するものにclass属性を付与する感じにしようか...
+
+```jsx
+let isSelected = false;
+if (sessionInfo.card[0].id === id) {
+  isSelected = true;
+}
+
+<Card name={card.name} key={card.id} id={card.id} onUpdate={updateSessionInfo} isMatched={card.isMatched} isSelected={isSelected}/>
+```
+
+で、selectedがtrueだったら、クラスを付与する。おっけい
+
+それをするにあたり、まずはHTMLをととのえよう。
+
 ### 将来的なところ
 
 - 時間をはかる
