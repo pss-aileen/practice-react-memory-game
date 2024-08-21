@@ -68,34 +68,35 @@ function App() {
   // あってなかったら、そのまま
   // そして、isMatched以外のカードは全て閉じるようにする
 
+  useEffect(() => {
+    compare();
+  }, [oneSession]);
+
   function setA(number) {
-    setClickTimes((number) => (number >= 2 ? 0 : number + 1));
+    setClickTimes((number) => number + 1);
     setB(number);
   }
 
   function setB(arrayNumber) {
-    if (clickTimes >= 2) {
-      setOneSession([]);
-    } else {
-      setOneSession((sessionLog) => {
-        const newSessionLog = [...sessionLog, cards[arrayNumber]];
-        return newSessionLog;
-      });
-
-      compare();
-    }
+    setOneSession((sessionLog) => {
+      const newSessionLog = [...sessionLog, cards[arrayNumber]];
+      return newSessionLog;
+    });
   }
 
   function compare() {
     console.log('通過していますか？');
     console.log(oneSession);
-    if (oneSession.length >= 1) {
+    if (oneSession.length === 2) {
       const A = oneSession[0]['name'];
       const B = oneSession[1]['name'];
 
       if (A === B) {
         console.log('一致しています！！！');
       }
+    } else if (oneSession.length >= 3) {
+      setOneSession([]);
+      setClickTimes(0);
     }
   }
 
