@@ -4,6 +4,9 @@ import Card from './components/Card';
 import cards from './data/cards.json';
 import doubleCards from './utils/doubleCards';
 import randomCards from './utils/randomCards';
+import cards2 from './data/cards';
+
+console.log(cards2);
 
 const doubleCardsArray = doubleCards(cards);
 const randomCardsArray = randomCards(doubleCardsArray);
