@@ -20,6 +20,11 @@ function App() {
   const [sessionInfo, setSessionInfo] = useState(sessionInfoModel);
 
   function updateSessionInfo(id, name) {
+    if (sessionInfo.cards.length === 1 && sessionInfo.cards[0].id === id) {
+      console.log('クリックは無効です');
+      return;
+    }
+
     setSessionInfo((sessionInfo) => {
       const newSessionInfo = {
         clickTimes: sessionInfo.clickTimes + 1,
