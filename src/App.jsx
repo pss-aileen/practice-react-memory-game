@@ -40,9 +40,26 @@ function App() {
       console.log('2つあるよ');
       console.log(sessionInfo);
 
+      setCards((cards) => {
+        const newCards = [...cards];
+        newCards.map((card) => {
+          if (card.name === sessionInfo.cards[0].name) {
+            console.log('通ってる？そもそも？');
+            card.isMatched = true;
+          }
+          return card;
+        });
+        console.log(newCards);
+        return newCards;
+      });
+
       setSessionInfo(sessionInfoModel);
     }
   }, [sessionInfo]);
+
+  useEffect(() => {
+    console.log('useEffectのcards: ', cards);
+  }, [cards]);
 
   return (
     <>
@@ -63,7 +80,7 @@ function App() {
 
       <ul>
         {cards.map((card) => (
-          <Card name={card.name} key={card.id} id={card.id} onUpdate={updateSessionInfo} />
+          <Card name={card.name} key={card.id} id={card.id} onUpdate={updateSessionInfo} isMatched={card.isMatched} />
         ))}
       </ul>
     </>
